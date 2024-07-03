@@ -1,0 +1,37 @@
+def convert_to_decimal(number: str, base: int) -> int:
+    return int(number, base)
+
+def convert_from_decimal(number: int, base: int) -> str:
+    if number == 0:
+        return "0"
+    digits = []
+    while number:
+        digits.append(int(number % base))
+        number //= base
+    return ''.join(str(x) if x < 10 else chr(x + 55) for x in digits[::-1])
+
+def base_conversion(number: str, base_from: int, base_to: int) -> str:
+    # Convert the number to decimal
+    decimal_number = convert_to_decimal(number, base_from)
+    # Convert from decimal to the target base
+    return convert_from_decimal(decimal_number, base_to)
+
+def main():
+    print("Multi-Base Numerical Converter")
+    number = input("Enter the number: ").strip()
+    base_from = int(input("Enter the base of the number (2-16): ").strip())
+    base_to = int(input("Enter the base to convert to (2-16): ").strip())
+    
+    # Validate input bases
+    if not (2 <= base_from <= 16) or not (2 <= base_to <= 16):
+        print("Base must be between 2 and 16.")
+        return
+
+    try:
+        converted_number = base_conversion(number, base_from, base_to)
+        print(f"The number {number} in base {base_from} is {converted_number} in base {base_to}.")
+    except ValueError:
+        print("Invalid number for the given base.")
+
+if __name__ == "__main__":
+    main()
