@@ -1,0 +1,10 @@
+import struct
+
+def float_to_ieee_754(num):
+    packed = struct.pack('>f', num)
+    unpacked = struct.unpack('>I', packed)[0]
+    return f'{unpacked:032b}'
+
+# Test
+print(float_to_ieee_754(0.15625))
+
