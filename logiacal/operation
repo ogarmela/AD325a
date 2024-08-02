@@ -1,0 +1,55 @@
+# Logical Operations
+def conjunction(A, B):
+    return A and B
+
+def disjunction(A, B):
+    return A or B
+
+def negation(A):
+    return not A
+
+def implication(A, B):
+    return not A or B
+
+def biconditional(A, B):
+    return A == B
+
+def get_user_input(prompt):
+    while True:
+        user_input = input(prompt).strip().lower()
+        if user_input in ['true', 'false', '1', '0']:
+            return user_input in ['true', '1']
+        print("Invalid input. Please enter 'true', 'false', '1', or '0'.")
+
+def evaluate_logic():
+    A = get_user_input("Enter value for A (true/false or 1/0): ")
+    B = get_user_input("Enter value for B (true/false or 1/0): ")
+
+    print(f"A AND B: {conjunction(A, B)}")
+    print(f"A OR B: {disjunction(A, B)}")
+    print(f"NOT A: {negation(A)}")
+    print(f"A IMPLIES B: {implication(A, B)}")
+    print(f"A IFF B: {biconditional(A, B)}")
+
+def generate_truth_table():
+    values = [True, False]
+    print("A\tB\tA AND B\tA OR B\tNOT A\tA IMPLIES B\tA IFF B")
+
+    for A in values:
+        for B in values:
+            print(f"{A}\t{B}\t{conjunction(A, B)}\t{disjunction(A, B)}\t{negation(A)}\t{implication(A, B)}\t{biconditional(A, B)}")
+
+def main():
+    while True:
+        mode = input("Choose mode: (1) Evaluate Logic, (2) Generate Truth Table, (3) Exit: ").strip()
+        if mode == '1':
+            evaluate_logic()
+        elif mode == '2':
+            generate_truth_table()
+        elif mode == '3':
+            break
+        else:
+            print("Invalid mode. Please enter '1', '2', or '3'.")
+
+if __name__ == "__main__":
+    main()
