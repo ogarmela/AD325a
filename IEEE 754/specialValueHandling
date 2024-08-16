@@ -1,0 +1,5 @@
+pos_inf = float('inf')
+neg_inf = float('-inf')
+nan = float('nan')
+
+print(pos_inf, neg_inf, nan)
