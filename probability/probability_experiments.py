@@ -1,5 +1,5 @@
-import random
-import matplotlib.pyplot as plt
+import random  
+import matplotlib.pyplot as plt  
 
 # Task 1: Simulating Coin Tosses
 def simulate_coin_tosses():
